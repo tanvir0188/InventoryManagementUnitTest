@@ -74,7 +74,10 @@ public class Customer {
     public double getTotalAmountSpent() {
         double total = 0.0;
         for (Map.Entry<Product, Integer> entry : purchasedItems.entrySet()) {
-            total += entry.getKey().getPrice() * entry.getValue();
+            Product product = entry.getKey();
+            int quantity = entry.getValue();
+            double discountedPrice = applyDiscount(product.getPrice(), quantity);
+            total += discountedPrice * quantity;
         }
         return total;
     }
