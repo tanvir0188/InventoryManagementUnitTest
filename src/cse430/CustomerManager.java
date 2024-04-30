@@ -2,7 +2,7 @@ package cse430;
 
 import java.util.HashMap;
 import java.util.Map;
-
+import cse430.Customer.CustomerStatus;
 public class CustomerManager {
     private Map<Integer, Customer> customers;
 

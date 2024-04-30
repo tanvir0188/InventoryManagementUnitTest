@@ -2,14 +2,15 @@ package cse430;
 
 import java.util.HashMap;
 import java.util.Map;
-enum CustomerStatus {
-    REGULAR,
-    PREMIUM,
-    ACTIVE,
-    INACTIVE
-}
+
 public class Customer {
 	 private int id;
+     public enum CustomerStatus {
+        REGULAR,
+        PREMIUM,
+        ACTIVE,
+        INACTIVE
+    }
 	    private String name;
 	    private String email;
 	    private String address;
@@ -117,7 +118,9 @@ public class Customer {
     public int getId() {
         return id;
     }
-
+    public String getName() {
+        return name;
+    }
     public void setId(int id) {
         this.id = id;
     }
