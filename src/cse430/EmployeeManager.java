@@ -55,7 +55,6 @@ public class EmployeeManager {
         return totalSalary;
     }
 
-  
     public List<Employee> getEmployeesWithHighestSalary() {
         List<Employee> highestPaidEmployees = new ArrayList<>();
         double maxSalary = Double.MIN_VALUE;
@@ -71,7 +70,6 @@ public class EmployeeManager {
         return highestPaidEmployees;
     }
 
-    
     public List<Employee> findEmployeesByJobTitle(String jobTitle) {
         List<Employee> employeesWithJobTitle = new ArrayList<>();
         for (Employee employee : employees) {
