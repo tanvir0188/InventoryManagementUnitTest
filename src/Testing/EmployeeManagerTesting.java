@@ -3,6 +3,9 @@ package Testing;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 
 import cse430.Employee;
@@ -64,6 +67,44 @@ public class EmployeeManagerTesting {
         assertEquals(employee3, employeeManager.getEmployees().get(2));
         assertEquals(employee4, employeeManager.getEmployees().get(3));
         assertEquals(employee5, employeeManager.getEmployees().get(4));
+    }
+
+    @Test
+    public void findEmployeesByDepartmentTesting() {
+        employeeManager.addEmployee(employee1);
+        employeeManager.addEmployee(employee2);
+        employeeManager.addEmployee(employee3);
+        employeeManager.addEmployee(employee4);
+        employeeManager.addEmployee(employee5);
+
+        List<Employee> cseDepartment = new ArrayList<>();
+        cseDepartment = employeeManager.findEmployeesByDepartment("CSE");
+
+        List<Employee> eeeDepartment = new ArrayList<>();
+        eeeDepartment = employeeManager.findEmployeesByDepartment("EEE");
+
+        assertEquals(4, employeeManager.findEmployeesByDepartment("CSE").size());
+        assertEquals(1, employeeManager.findEmployeesByDepartment("EEE").size());
+
+        assertEquals(employee1, cseDepartment.get(0));
+        assertEquals(employee3, cseDepartment.get(1));
+        assertEquals(employee4, cseDepartment.get(2));
+        assertEquals(employee5, cseDepartment.get(3));
+
+        assertEquals(employee2, eeeDepartment.get(0));
+
+    }
+
+    @Test
+    public void calculateTotalSalaryTesting() {
+        employeeManager.addEmployee(employee1);
+        employeeManager.addEmployee(employee2);
+        employeeManager.addEmployee(employee3);
+        employeeManager.addEmployee(employee4);
+        employeeManager.addEmployee(employee5);
+
+        assertEquals(305000.0, employeeManager.calculateTotalSalary(), 0.001);
+
     }
 
 }
