@@ -107,4 +107,55 @@ public class EmployeeManagerTesting {
 
     }
 
+    @Test
+    public void getEmployeesWithHighestSalaryTesting() {
+        employeeManager.addEmployee(employee1);
+        employeeManager.addEmployee(employee2);
+        employeeManager.addEmployee(employee3);
+        employeeManager.addEmployee(employee4);
+        employeeManager.addEmployee(employee5);
+
+        List<Employee> highestPaidEmployees = new ArrayList<>();
+
+        highestPaidEmployees = employeeManager.getEmployeesWithHighestSalary();
+
+        assertEquals(2, highestPaidEmployees.size());
+
+        assertEquals(employee4, highestPaidEmployees.get(0));
+        assertEquals(employee5, highestPaidEmployees.get(1));
+    }
+
+    @Test
+    public void findEmployeesByJobTitleTesting() {
+        employeeManager.addEmployee(employee1);
+        employeeManager.addEmployee(employee2);
+        employeeManager.addEmployee(employee3);
+        employeeManager.addEmployee(employee4);
+        employeeManager.addEmployee(employee5);
+
+        List<Employee> webDeveloper = new ArrayList<>();
+        webDeveloper = employeeManager.findEmployeesByJobTitle("Web Developer");
+
+        List<Employee> electricEngineer = new ArrayList<>();
+        electricEngineer = employeeManager.findEmployeesByJobTitle("Electric Engineer");
+
+        List<Employee> qualityAssuranceEngineer = new ArrayList<>();
+        qualityAssuranceEngineer = employeeManager.findEmployeesByJobTitle("Quality Assurance Engineer");
+
+        List<Employee> androidDeveloper = new ArrayList<>();
+        androidDeveloper = employeeManager.findEmployeesByJobTitle("Android Developer");
+
+        assertEquals(1, webDeveloper.size());
+        assertEquals(1, electricEngineer.size());
+        assertEquals(1, qualityAssuranceEngineer.size());
+        assertEquals(2, androidDeveloper.size());
+
+        assertEquals(employee1, webDeveloper.get(0));
+        assertEquals(employee2, electricEngineer.get(0));
+        assertEquals(employee3, qualityAssuranceEngineer.get(0));
+        assertEquals(employee4, androidDeveloper.get(0));
+        assertEquals(employee5, androidDeveloper.get(1));
+
+    }
+
 }
