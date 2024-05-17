@@ -67,14 +67,14 @@ public class TransactionTesting {
         assertTrue(transaction.isRecentTransaction());
     }
 
-    // @Test
-    // public void isPastTransactionTesting() {
-    // assertFalse(transaction.isPastTransaction());
-    // LocalDateTime eightDaysAgo = LocalDateTime.now().minusDays(8);
-    // Transaction oldTransaction = new Transaction("old", 500.0);
-    // oldTransaction.dateTime = eightDaysAgo;
-    // assertTrue(oldTransaction.isPastTransaction());
-    // }
+    @Test
+    public void isPastTransactionTesting() {
+        assertFalse(transaction.isPastTransaction());
+        LocalDateTime eightDaysAgo = LocalDateTime.now().minusDays(8);
+        Transaction oldTransaction = new Transaction("old", 500.0);
+        oldTransaction.setDateTime(eightDaysAgo);
+        assertTrue(oldTransaction.isPastTransaction());
+    }
 
     @Test
     public void exceedsThresholdTesting() {

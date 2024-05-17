@@ -25,8 +25,12 @@ public class Transaction {
         return amount;
     }
 
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
     public void setAmount(double amount) {
-        
+
         if (amount < 0) {
             throw new IllegalArgumentException("Amount cannot be negative.");
         }
@@ -46,37 +50,33 @@ public class Transaction {
     }
 
     public boolean isRecentTransaction() {
-       
+
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime oneWeekAgo = now.minusDays(7);
         return dateTime.isAfter(oneWeekAgo);
     }
 
     public boolean isPastTransaction() {
-       
+
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime oneWeekAgo = now.minusDays(7);
         return dateTime.isBefore(oneWeekAgo);
     }
 
-    
     public boolean exceedsThreshold(double threshold) {
         return amount > threshold;
     }
 
-    
     public boolean isFutureTransaction() {
-        
+
         LocalDateTime now = LocalDateTime.now();
         return dateTime.isAfter(now);
     }
 
-   
     public boolean isRefundTransaction() {
         return type.equalsIgnoreCase("refund");
     }
 
-    
     public boolean isSpecificTransaction(String type, double amount) {
         return this.type.equalsIgnoreCase(type) && this.amount == amount;
     }
