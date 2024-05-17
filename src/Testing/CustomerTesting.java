@@ -11,41 +11,47 @@ Customer cs =new Customer(1, "Arifin", "arifinzaman", "dfndj");
 Product  product=new Product(0, "samsung", 1000, 50, null, null);
 Product  productTwo=new Product(0, "shampo", 100, 50, null, null);
 @Test
-public void testPurchaseItem_WithoutDiscount() {
+public void testPurchaseItem() {
    
-    int quantity = 3;
-    cs.purchaseItem(product, quantity);
+    
+    cs.purchaseItem(product, 3);
+    cs.purchaseItem(productTwo, 5);
     // Assert that the product is added to purchasedItems
     assertTrue(cs.hasPurchasedItem(product));
-    // Assert that the quantity is correct
-    assertEquals(quantity, cs.getPurchasedItems().get(product).intValue());
-    // Assert that the price is correct
-    assertEquals(3000.0, cs.getTotalAmountSpent(), 0.001);
-}
+    assertTrue(cs.hasPurchasedItem(productTwo));
 
+}
 @Test
-public void testPurchaseItem_WithDiscount() {
+public void testGetTotalAmount_Purchase()
+{
+    cs.purchaseItem(product, 3);
+    //without discount
+    assertEquals(3000.0, cs.getTotalAmountSpent(), 0.001);
+    cs.clearAllPurchasedItems();
+    cs.purchaseItem(product, 10);
+    //with discount test
+    assertEquals(9000, cs.getTotalAmountSpent(), 0.001);
+}
+@Test
+public void testPurchaseItem_Quantity() {
    
-    int quantity = 11;
-    cs.purchaseItem(product, quantity);
-    // Assert that the product is added to purchasedItems
-    assertTrue(cs.hasPurchasedItem(product));
-    // Assert that the quantity is correct
-    assertEquals(quantity, cs.getPurchasedItems().get(product).intValue());
-    // Assert that the price with discount is correct
-    assertEquals(9900.0, cs.getTotalAmountSpent(), 0.001);
+    
+    cs.purchaseItem(product, 11);
+    cs.purchaseItem(productTwo, 5);
+    assertEquals(11, cs.getPurchasedItems().get(product).intValue());
+    assertEquals(5, cs.getPurchasedItems().get(productTwo).intValue());
+    
 }
 
 @Test
 public void testReturnItem() {
    
-    int quantity = 5;
-    cs.purchaseItem(product, quantity);
+    cs.purchaseItem(product, 5);
    cs.returnItem(product,2);
    assertEquals(3,cs.getTotalItemsPurchased());
    // Edge case: Trying to return more items than purchased
    cs.returnItem(product, 5);
-   assertFalse(cs.hasPurchasedItem(product));
+   assertEquals(0,cs.getTotalItemsPurchased());
 }
 @Test
 public void testClearItem() {
