@@ -62,11 +62,11 @@ public class EmployeeManagerTesting {
         employeeManager.addEmployee(employee4);
         employeeManager.addEmployee(employee5);
 
-        assertEquals(employee1, employeeManager.getEmployees().get(0));
-        assertEquals(employee2, employeeManager.getEmployees().get(1));
-        assertEquals(employee3, employeeManager.getEmployees().get(2));
-        assertEquals(employee4, employeeManager.getEmployees().get(3));
-        assertEquals(employee5, employeeManager.getEmployees().get(4));
+        assertEquals(employee1, employeeManager.findEmployeeById(1));
+        assertEquals(employee2, employeeManager.findEmployeeById(2));
+        assertEquals(employee3, employeeManager.findEmployeeById(3));
+        assertEquals(employee4, employeeManager.findEmployeeById(4));
+        assertEquals(employee5, employeeManager.findEmployeeById(5));
     }
 
     @Test
