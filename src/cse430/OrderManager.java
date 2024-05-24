@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import cse430.Order.OrderStatus;
 
 public class OrderManager {
     private Map<Integer, Order> orders;
@@ -73,7 +74,6 @@ public class OrderManager {
         return ordersWithStatus;
     }
 
-  
     public List<Order> getOrdersByPaymentMethod(String paymentMethod) {
         List<Order> ordersByPaymentMethod = new ArrayList<>();
         for (Order order : orders.values()) {
@@ -84,7 +84,6 @@ public class OrderManager {
         return ordersByPaymentMethod;
     }
 
- 
     public List<Order> getOrdersByDateRange(String startDate, String endDate) {
         List<Order> ordersWithinDateRange = new ArrayList<>();
         for (Order order : orders.values()) {

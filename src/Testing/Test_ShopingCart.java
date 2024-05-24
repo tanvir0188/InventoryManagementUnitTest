@@ -1,6 +1,5 @@
 package Testing;
 
- 
 import static org.junit.Assert.*;
 import org.junit.Test;
 
@@ -8,15 +7,14 @@ import cse430.Product;
 import cse430.ShoppingCart;
 
 import java.util.Map;
+
 public class Test_ShopingCart {
 
-
     ShoppingCart cart = new ShoppingCart();
-    Product  product1=new Product(0, "samsung", 1000, 50, null, null);
-    Product  product2=new Product(1, "shampo", 100, 60, null, null);
-    Product  product3=new Product(2, "chips", 10000, 10, null, null);
+    Product product1 = new Product(0, "samsung", 1000, 50, null, null);
+    Product product2 = new Product(1, "shampo", 100, 60, null, null);
+    Product product3 = new Product(2, "chips", 10000, 10, null, null);
 
-   
     @Test
     public void testAddItem() {
         cart.addItem(product1, 3);

@@ -1,23 +1,17 @@
 package cse430;
 
+
 import java.util.HashMap;
 import java.util.Map;
 
-enum OrderStatus {
-    PENDING,
-    PROCESSING,
-    SHIPPED,
-    DELIVERED,
-    CANCELLED
-}
 
 public class Order {
     private int orderId;
     private int customerId;
     private String orderDate;
     private String paymentMethod;
-    private OrderStatus status;
-    private Map<Product, Integer> products;
+    private  OrderStatus status;
+    private final Map<Product, Integer> products;
     
     public Order(int orderId, int customerId, String orderDate, String paymentMethod) {
         this.orderId = orderId;
@@ -68,8 +62,8 @@ public class Order {
         return status;
     }
 
-    public void setStatus(OrderStatus status) {
-        this.status = status;
+    public void setStatus(Object shipped) {
+        this.status = (OrderStatus) shipped;
     }
     public double getTotalPrice() {
         double totalPrice = 0.0;
@@ -80,5 +74,30 @@ public class Order {
         }
         return totalPrice;
     }
+
+    public void addProduct(Product product, int quantity) {
+        if (quantity <= 0) {
+            throw new IllegalArgumentException("Quantity must be greater than zero");
+        }
+        products.put(product, products.getOrDefault(product, 0) + quantity);
+    }
+
+    public static class OrderStatus {
+
+        public static OrderStatus SHIPPED ;
+        public static OrderStatus DELIVERED;
+        public static OrderStatus PENDING;
+        public static OrderStatus PROCESSING;
+        public static OrderStatus IN_PROGRESS;
+
+        public OrderStatus() {
+        }
+    }
+
+
+    
+
    
 }
+
+
