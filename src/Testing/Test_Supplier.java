@@ -6,15 +6,11 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
-import java.util.List;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import cse430.Product;
 import cse430.Supplier;
-
-import static org.junit.jupiter.api.Assertions.*;
 
  
     public class Test_Supplier {
