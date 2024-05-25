@@ -5,9 +5,11 @@ import java.util.Map;
 
 public class ShoppingCart {
     private Map<Product, Integer> items;
+    private double discountPercentage;
 
     public ShoppingCart() {
         this.items = new HashMap<>();
+        this.discountPercentage = 0.0; // No discount by default
     }
 
     public void addItem(Product product, int quantity) {
@@ -38,6 +40,8 @@ public class ShoppingCart {
         for (Map.Entry<Product, Integer> entry : items.entrySet()) {
             totalPrice += entry.getKey().getPrice() * entry.getValue();
         }
+        // Apply discount if any
+        totalPrice = totalPrice * (1 - discountPercentage / 100);
         return totalPrice;
     }
 
@@ -50,11 +54,7 @@ public class ShoppingCart {
     }
 
     public void applyDiscount(double discountPercentage) {
-        for (Map.Entry<Product, Integer> entry : items.entrySet()) {
-            Product product = entry.getKey();
-            double discountedPrice = product.getPrice() * (1 - discountPercentage / 100);
-            items.put(product, (int) discountedPrice);
-        }
+        this.discountPercentage = discountPercentage;
     }
 
     public int getTotalQuantity() {
@@ -69,7 +69,6 @@ public class ShoppingCart {
         return items.containsKey(product);
     }
 
-   
     public Map<Product, Integer> getItemsAboveThreshold(int threshold) {
         Map<Product, Integer> itemsAboveThreshold = new HashMap<>();
         for (Map.Entry<Product, Integer> entry : items.entrySet()) {

@@ -131,18 +131,24 @@ public void testGetCustomerInfo(){
  
 }
 @Test
-public void testAddAndRnvBalance(){
+public void testAddBalance(){
    
     cs.addBalance(50000);
     assertEquals(50000.0,cs.getBalance(),0.1);
 
-    cs.removeBalance(50000);
+    
 
-    cs.addBalance(0);
-    assertEquals(0.0,cs.getBalance(),0.1);
+    cs.addBalance(10000);
+    assertEquals(60000.0,cs.getBalance(),0.1);
 
+}
+@Test
+public void testRemoveBalance()
+{
+    cs.addBalance(50000);
     cs.removeBalance(20000);
+    assertEquals(30000.0,cs.getBalance(),0.1);
+    cs.removeBalance(30000);
     assertEquals(0.0,cs.getBalance(),0.1);
- 
 }
 }
