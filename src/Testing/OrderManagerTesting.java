@@ -15,7 +15,6 @@ import cse430.Order;
 import cse430.Order.OrderStatus;
 import cse430.OrderManager;
 import cse430.Product;
-import cse430.Inventory;
 
 public class OrderManagerTesting {
 
