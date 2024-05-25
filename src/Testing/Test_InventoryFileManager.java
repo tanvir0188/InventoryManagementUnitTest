@@ -61,9 +61,21 @@ public class Test_InventoryFileManager {
         List<Product> products = fileManager.readInventoryFromFile();
 
         assertEquals(2, products.size());
-        assertEquals(product1, products.get(0));
-        assertEquals(product2, products.get(1));
+        assertEquals(product1.getId(), products.get(0).getId());
+        assertEquals(product1.getName(), products.get(0).getName());
+        assertEquals(product1.getPrice(), products.get(0).getPrice(), 0.01);
+        assertEquals(product1.getQuantity(), products.get(0).getQuantity());
+        assertEquals(product1.getType(), products.get(0).getType());
+        assertEquals(product1.getExpiryDate(), products.get(0).getExpiryDate());
+
+        assertEquals(product2.getId(), products.get(1).getId());
+        assertEquals(product2.getName(), products.get(1).getName());
+        assertEquals(product2.getPrice(), products.get(1).getPrice(), 0.01);
+        assertEquals(product2.getQuantity(), products.get(1).getQuantity());
+        assertEquals(product2.getType(), products.get(1).getType());
+        assertEquals(product2.getExpiryDate(), products.get(1).getExpiryDate());
     }
+
 
     @Test
     public void testBackupInventory() throws IOException {
